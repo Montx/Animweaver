@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(AnimWeaver)
 
+set(OpenGL_GL_PREFERENCE GLVND)
 set(GLFW_DIR "libraries/glfw")
+
+find_package(OpenGL REQUIRED)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -24,6 +27,6 @@ source_group(TREE "code/source" PREFIX "source" FILES ${SOURCES})
 source_group(TREE "code/include" PREFIX "include" FILES ${HEADERS})
 
 add_executable(AnimWeaver ${SOURCES} ${HEADERS})
-target_link_libraries(AnimWeaver glfw)
+target_link_libraries(AnimWeaver glfw OpenGL::GL)
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT AnimWeaver)

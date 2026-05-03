@@ -13,6 +13,12 @@ class AWWindow
 
 		void Cleanup();
 
+		void HandleKeyEvents(int Key, int ScanCode, int Action, int Mods);
+
+	private:
+		void HandleWindowCloseEvents();
+		void HandleMouseButtonEvents(int Button, int Action, int Mods);
+
 	private:
 
 		GLFWwindow *mWindow = nullptr;
